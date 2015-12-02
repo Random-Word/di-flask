@@ -10,7 +10,7 @@ import itertools
 
 app = Flask(__name__)
 
-API_KEY = 'Enter Here'
+API_KEY = '1AMNY3TPnpsFSw6ejs7D'
 
 @app.route('/')
 def main():

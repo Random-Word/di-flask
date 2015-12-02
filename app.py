@@ -34,7 +34,7 @@ def handle_input():
             try:
                 _plot_stock(t, stock_plot, colour=c)
             except Quandl.Quandl.DatasetNotFound as e:
-                not_founf_list.append(t)
+                not_found_list.append(t)
         script, div = components(stock_plot)
         return render_template('graph.html', script=script, div=div,
                 notfoundlist=", ".join(not_found_list))
@@ -45,8 +45,7 @@ def plot_stock(ticker):
     try:
         _plot_stock(ticker, stock_plot)
     except Quandl.Quandl.DatasetNotFound as e:
-        return render_template('graph.html', script="", div="Data set not\
-                found: %s"%(ticker))
+        return render_template('graph.html', script="", div="", notfoundlist=ticker)
 
     script, div = components(stock_plot)
     return render_template('graph.html', script=script, div=div)

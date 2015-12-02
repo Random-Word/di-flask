@@ -37,7 +37,7 @@ def handle_input():
                 not_founf_list.append(t)
         script, div = components(stock_plot)
         return render_template('graph.html', script=script, div=div,
-                not_found=", ".join(not_found_list))
+                notfoundlist=", ".join(not_found_list))
 
 @app.route('/plot/<ticker>')
 def plot_stock(ticker):

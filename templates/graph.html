@@ -6,10 +6,13 @@
   </head>
   <body>
     <form id='input' method='post' action='/plot'>
-      Ticker symbol: <input type='text' name='ticker' />   <input type="submit" value="Submit">
+      Ticker Symbols (Whitespace Delimited): <input type='text' name='ticker' />   <input type="submit" value="Submit">
     </form> 
     <div class=page>
       {{ div | safe }}
+    </div>
+    <div>
+        The following tickers could not be found: {{ notfoundlist | safe }}
     </div>
   </body>
 </html>

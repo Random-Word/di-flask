@@ -34,10 +34,10 @@ def handle_input():
             try:
                 _plot_stock(t, stock_plot, colour=c)
             except Quandl.Quandl.DatasetNotFound as e:
-                not_founf_list.append(t)
+                not_found_list.append(t)
         script, div = components(stock_plot)
         return render_template('graph.html', script=script, div=div,
-                not_found=", ".join(not_found_list))
+                notfoundlist=", ".join(not_found_list))
 
 @app.route('/plot/<ticker>')
 def plot_stock(ticker):
@@ -45,8 +45,7 @@ def plot_stock(ticker):
     try:
         _plot_stock(ticker, stock_plot)
     except Quandl.Quandl.DatasetNotFound as e:
-        return render_template('graph.html', script="", div="Data set not\
-                found: %s"%(ticker))
+        return render_template('graph.html', script="", div="", notfoundlist=ticker)
 
     script, div = components(stock_plot)
     return render_template('graph.html', script=script, div=div)
@@ -59,7 +58,7 @@ def gen_stock_plot(title):
     return(stock_plot)
 
 
-def _plot_stock(ticker, plot, colour='b'):
+def _plot_stock(ticker, plot, colour='blue'):
     data = Quandl.get('WIKI/'+ticker+'.4', authtoken=API_KEY)
     plot.line(data.index,data['Close'],legend=ticker,color=colour)
 

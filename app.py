@@ -59,7 +59,7 @@ def gen_stock_plot(title):
     return(stock_plot)
 
 
-def _plot_stock(ticker, plot, colour='b'):
+def _plot_stock(ticker, plot, colour='blue'):
     data = Quandl.get('WIKI/'+ticker+'.4', authtoken=API_KEY)
     plot.line(data.index,data['Close'],legend=ticker,color=colour)
 
